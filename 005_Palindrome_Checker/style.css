@@ -1,0 +1,28 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  font-family: cursive;
+}
+.container {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+#text-input {
+  margin-bottom: 1rem;
+  padding: 8px;
+}
+#check-btn {
+  padding: 8px;
+}
+
+#result {
+  min-height: 200px;
+}
