@@ -1,3 +1,5 @@
+///can learn use of ternary operator in setDisplaycard function
+
 const teamName = document.getElementById("team");
 const typeOfSport = document.getElementById("sport");
 const worldCupYear = document.getElementById("year");
@@ -181,6 +183,9 @@ worldCupYear.textContent = year;
 headCoach.textContent = coachName;
 
 const setPlayerCards = (arr = players) => {
+
+  
+  
   playerCards.innerHTML += arr
     .map(
       ({ name, position, number, isCaptain, nickname }) =>
@@ -198,6 +203,8 @@ const setPlayerCards = (arr = players) => {
 
 playersDropdownList.addEventListener("change", (e) => {
   playerCards.innerHTML = "";
+
+  
 
   switch (e.target.value) {
     case "nickname":
@@ -221,6 +228,8 @@ playersDropdownList.addEventListener("change", (e) => {
         players.filter((player) => player.position === "goalkeeper")
       );
       break;
+      default:
+        setPlayerCards(players)
 
 
 
