@@ -98,3 +98,6 @@ function studentMsg(totalScores, studentScore) {
   const passedOrFailed = hasPassingGrade(studentScore) ? "passed" : "failed";
   return `"Class average: ${average}. Your grade: ${grade}. You ${passedOrFailed} the course."`;
 }
+
+
+
