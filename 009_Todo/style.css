@@ -1,66 +1,99 @@
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
-body{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.title {
+  text-align: center;
+}
 main{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  min-height: 450px;
+  max-width: 400px;
+  border: 4px solid #f1be32;
+  padding: 2rem;
+  border-radius: 8px;
+  margin-inline: auto;
+  position: relative;
 }
-.container{
-    min-height: 450px;
-    max-width: 400px;
-    width: 100%;
-    border: 4px solid #F1BE32;
-    padding: 2rem;
-    border-radius: 8px;
-  /* display: flex;
-  flex-direction: column;
-justify-content: space-between; */
-position: relative;
+
+/* .change-border-color.change-border-color {
+  border: 1px solid black;
+} */
+form{
+ margin-bottom: 1.5rem;
+  display: none;
+}
+form>div{
+  margin-bottom: 1rem;
+}
+form.show {
+  display: block;
+}
+form img {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+form label {
+  font-size: 24px;
+  display: inline-block;
+  margin-bottom: 4px;
+}
+form input,
+form textarea {
+  width: 100%;
+  padding: 8px;
+  font-size: 20px;
+ 
+}
 
 
+
+button {
     
+    background-color: #ffb036;
+    border: 2px solid #ab7320;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+    color: #ffffff;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+  }
+  .add-new-task-button,
+  .add-task-button{
+    width: 100%;
+  }
+  
+  .add-new-task-button:hover {
+    background-color: #ffa726;
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15);
+  }
+  
 
+.todos-container {
+  display: flex;
+  flex-direction: column;
 }
-.change-border-color.change-border-color{
-    border: 1px solid black;
+.todo{
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
-.todo-input-form{
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+.todo-controls-btn-container{
+  font-size: 14px;
+}
+.edit-btn{
+  margin-right: 2rem;
+  
+}
+.hide{
     display: none;
 }
-.todo-input-form.show{
-    display: block;
-}
-.todo-input-form img{
-    position: absolute;
-    top: 10px;
-    right: 10px;
 
-}
-.container label{
-    font-size: 20px;
-}
-.container input,
-.container textarea{
-    width: 100%;
-    font-size: 20px;
-}
-.add-new-task-button{
-    width: 100%;
-    background-color: #FFB036;
-    border: 2px solid #AB7320;
-    text-align: center;
-    padding: 4px;
-}
-.todos-container{
-    display: flex;
-    flex-direction: column;
-}
+

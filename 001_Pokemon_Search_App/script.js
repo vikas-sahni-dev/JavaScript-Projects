@@ -43,6 +43,8 @@ function showPokemonStats(url) {
   fetch(url)
     .then((res) => res.json())
     .then((data) => {
+      console.log(data);
+      
       pokemonName.innerText = data.name;
       id.innerText = `#${data.id}`;
       weight.innerText = `Weight: ${data.weight}`;

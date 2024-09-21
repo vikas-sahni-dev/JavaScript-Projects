@@ -1,10 +1,13 @@
-//in this better approach i am onlu using one set interval,earlier i was using three set intervals
+//in this better approach i am only using one set interval,earlier i was using three set intervals
 
+
+//dateDropdown is not that good,it can be dateOptionsSelectElement 
 const dateDropdown = document.querySelector(".container select");
 const showDateElement = document.querySelector(".showDate");
 let activeInterval;
 
 function getDateData() {
+  //variable name should be date not dateObj
   const dateObj = new Date();
   return {
     date: dateObj.getDate(),

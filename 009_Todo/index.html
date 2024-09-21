@@ -3,45 +3,47 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Todo App</title>
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
   </head>
   <body>
-    <main>
-      <h1>Todo App</h1>
-      <form class="container">
-        <div class="todo-input-form">
+ 
+      <h1 class="title">Todo App</h1>
+      <main>
+      <form>
+        
           <img src="./close-icon.svg" alt="" />
           <div>
-            <label for="">Title</label>
+            <label for="title-input">Title</label>
             <br />
 
-            <input type="text" class="title-input"/>
+            <input type="text" id="title-input" required />
           </div>
 
           <div>
-            <label for="">Date</label>
+            <label for="date-input">Date</label>
             <br />
 
-            <input type="date"  class="date-input"/>
+            <input type="date" id="date-input" />
           </div>
           <div>
-            <label for="">Description</label>
+            <label for="description">Description</label>
             <br />
 
-            <textarea name="" id="" rows="4"></textarea>
+            <textarea rows="4" id="description"></textarea>
           </div>
-        </div>
+          <button class="add-task-button">Add Task</button>
 
-        <button class="add-new-task-button">Add New Task</button>
+        
       </form>
+      <button class="add-new-task-button">Add New Task</button>
+
     </main>
   </body>
 </html>
 
-
-  <!-- <div>
+<!-- <div>
     <span>Title:</span>
     <span class="title"></span>
   </div>
@@ -57,4 +59,3 @@
     <button>Edit</button>
     <button>Delete</button>
   </div> -->
-

@@ -1,4 +1,4 @@
-//my approach
+// my approach
 // function getAverage(scores) {
 //   let totalMarks = 0;
 //   for (let i = 0; i < scores.length; i++) {
@@ -8,9 +8,8 @@
 //   return totalMarks / scores.length;
 // }
 
-
-
 //learning: use  for of loop to traversing over an array insted for loop
+//   i used variableName "totalMarks"but here "sum" should be better
 function getAverage(scores) {
   let sum = 0;
   for (const score of scores) {
@@ -19,6 +18,7 @@ function getAverage(scores) {
   return sum / scores.length;
 }
 
+//******************************************************** */
 // my appraoach
 // function getGrade(score) {
 //   let grade;
@@ -37,7 +37,6 @@ function getAverage(scores) {
 //   }
 //   return grade;
 // }
-
 
 // my approach-2
 // function getGrade(score) {
@@ -60,26 +59,22 @@ function getAverage(scores) {
 
 //learning:i was creating variable grade but its not necessary we can directly return value
 
-
 function getGrade(score) {
-    if (score === 100) {
-      return "A++";
-    } else if (score >= 90) {
-      return "A";
-    } else if (score >= 80) {
-      return "B";
-    } else if (score >= 70) {
-      return "C";
-    } else if (score >= 60) {
-      return "D";
-    } else {
-      return "F";
-    }
+  if (score === 100) {
+    return "A++";
+  } else if (score >= 90) {
+    return "A";
+  } else if (score >= 80) {
+    return "B";
+  } else if (score >= 70) {
+    return "C";
+  } else if (score >= 60) {
+    return "D";
+  } else {
+    return "F";
   }
-
-
-
-
+}
+//******************************************************** */
 
 // function hasPassingGrade(score) {
 //   const grade = getGrade(score);
@@ -90,12 +85,12 @@ function getGrade(score) {
 //   }
 // }
 
-
 //learning:use comparsion operator to return true/false directly
+           //very good function name here hasPassingGrade
 function hasPassingGrade(score) {
   return getGrade(score) !== "F";
 }
-
+//******************************************************** */
 
 function studentMsg(totalScores, studentScore) {
   const average = getAverage(totalScores);

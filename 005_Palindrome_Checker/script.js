@@ -1,3 +1,5 @@
+//use methods to do reversing a text
+
 const textInput = document.querySelector("#text-input");
 const checkButton = document.querySelector("#check-btn");
 const result = document.querySelector("#result");
@@ -12,6 +14,7 @@ function checkPalindrome(str) {
   //learning: use builtin methods to do task
   
   let reversedText =text.split("").reverse().join("")
+
   // for (let i = text.length - 1; i >= 0; i--) {
   //   reversedText +=text[i]
   // }
@@ -22,7 +25,7 @@ function checkPalindrome(str) {
 }
 
 checkButton.addEventListener("click", () => {
-  const textInputValue = textInput.value.toUpperCase().trim();
+  const textInputValue = textInput.value.toLowerCase().trim();
   if (textInputValue === "") {
     alert("Please input a value");
   } else {
