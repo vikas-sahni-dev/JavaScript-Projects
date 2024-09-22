@@ -1,132 +1,127 @@
 const addNewTaskButton = document.querySelector(".add-new-task-button");
-const addTaskButton=document.querySelector(".add-task-button")
-const todoInputForm = document.querySelector(".input-form");
+const addTaskButton = document.querySelector(".add-task-button");
 const form = document.querySelector("form");
 const titleInputElement = document.querySelector("#title-input");
 const dateInputElement = document.querySelector("#date-input");
-const textAreaElement = document.querySelector("textarea");
-const closeIconForTodoInputForm = document.querySelector(".container>div img");
-const todosContainer = document.createElement("div");
-todosContainer.classList.add("todos-container");
-addNewTaskButton.insertAdjacentElement("afterend", todosContainer);
-let todoNumber = 0;
+const descriptionTextAreaElement = document.querySelector("textarea");
+const closeIconForTodoInputForm = document.querySelector("form img");
+const todosContainer = document.querySelector(".todos-container");
+
 const data = JSON.parse(localStorage.getItem("data")) || {};
+let todoNumber = +Object.keys(data)[Object.keys(data).length - 1] || 0;
+console.log(todoNumber);
 
-for (const d in data) {
-  console.log(d);
-  console.log(data[d]);
+let i = +Object.keys(data)[Object.keys(data).length-1]||0;
 
-  todosContainer.innerHTML += `
 
-   <div class="todo">
-    <div>
-      <span class="title">Title:</span>
-      <span>${data[d].title}</span>
-    </div>
-    <div>
-      <span  <b> Date: </b> </span>
-      <span>${data[d].data}</span>
-    </div>
-    <div>
-      <span  class="" >Description:${data[d].description}</span>
-      <span></span>
-    </div>
-    <div class="
-    ">
-      <button class="edit-btn">Edit</button>
-      <button class="delete-btn">Delete</button>
-    </div>
-  </div>;
- `;
+const todoDataArr = Object.values(data);
+todoDataArr.forEach((todoData) => {
+  // console.log(todoData);
+  addTodoinTodoContainer(
+    todoData.id,
+    todoData.title,
+    todoData.date,
+    todoData.description
+  );
+});
 
+
+
+function showHomePage(){
+  form.classList.remove("show");
+  addNewTaskButton.classList.remove("hide");
+  todosContainer.classList.remove("hide");
+
+}
+function showForm(){
+  addNewTaskButton.classList.add("hide");
+  todosContainer.classList.add("hide");
+  form.classList.add("show");
 }
 
 
 
-function addTodoinTodoContainer() {
-  ++todoNumber;
 
-  const todo=document.createElement("div")
- todo.innerHTML=`
- 
 
-      <div>
+
+
+
+
+function addTodoinTodoContainer(id, title, date, description) {
+  const todo = document.createElement("div");
+  todo.classList.add(id);
+
+  todo.innerHTML = `
+  <div>
     <span>Title:</span>
-    <span>${titleInputElement.value}</span>
+    <span>${title}</span>
   </div>
   <div>
     <span>Date:</span>
-    <span>${dateInputElement.value}</span>
+    <span>${date}</span>
   </div>
   <div>
-    <span>Description:${textAreaElement.value}</span>
-    <span></span>
+    <span>Description:</span>
+    <span>${description}</span>
   </div>
   <div>
-    <button>Edit</button>
-    <button>Delete</button>
+    <button class="edit-btn">Edit</button>
+    <button class="delete-btn">Delete</button>
   </div>
- 
+  
+    `;
+  todosContainer.appendChild(todo);
 
-    
-    
-    `
-    todosContainer.append(todo)
+  addClickEventListenerToDeleteButton(todo.querySelector(".delete-btn"));
+  addClickEventListenerToEditButton(todo.querySelector(".edit-btn"));
+}
 
+function addClickEventListenerToDeleteButton(deleteBtn) {
+  deleteBtn.addEventListener("click", () => {
+    const todo = deleteBtn.parentElement.parentElement;
+    delete data[todo.classList[0]];
+    localStorage.setItem("data", JSON.stringify(data));
+    todo.remove();
+  });
+}
+function addClickEventListenerToEditButton(editBtn) {
+  editBtn.addEventListener("click", () => {
+   showForm()
+    addTaskButton.innerText = "Update Task";
+    const todoNum = editBtn.parentElement.parentElement.classList[0];
+    console.log(data[todoNum]);
+  });
+}
+
+addNewTaskButton.addEventListener("click", showForm)
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  ++todoNumber;
+  console.log("todo-Number", todoNumber);
+
+  addTodoinTodoContainer(
+    ++i,
+    titleInputElement.value,
+    dateInputElement.value,
+    descriptionTextAreaElement.value
+  );
   data[todoNumber] = {
-    title: `${titleInputElement.value}`,
-    date: `${dateInputElement.value}`,
-    description: `${textAreaElement.value}`,
+    id: i,
+    title: titleInputElement.value,
+    date: dateInputElement.value,
+    description: descriptionTextAreaElement.value,
   };
 
   localStorage.setItem("data", JSON.stringify(data));
-  localStorage.getItem("data");
-
-addClickEventListenerToDeleteButton(todo.querySelector(".delete-btn"))
-
- 
-}
-
-function addClickEventListenerToDeleteButton(btn){
-  console.log(btn);
-  
-
-}
+showHomePage()
+  form.reset();
+});
 
 
 
-addNewTaskButton.addEventListener("click",()=>{
-addNewTaskButton.classList.add("hide")
-todosContainer.classList.add("hide")
-form.classList.add("show")
-
+closeIconForTodoInputForm.addEventListener("click",()=>{
+ showHomePage()
 
 })
-addTaskButton.addEventListener("click",(e)=>{
-  // e.preventDefault()
-  addNewTaskButton.classList.remove("hide")
-  todosContainer.classList.remove("hide")
-
-form.classList.remove("show")
-e.preventDefault()
-addTodoinTodoContainer()
-
-})
-
-// addNewTaskButton.addEventListener("click", (e) => {
-//   e.preventDefault();
-//   todoInputForm.classList.toggle("show");
-//   addNewTaskButton.classList.add("hide")
-//   container.classList.toggle("change-border-color");
-//   if (!todoInputForm.classList.contains("show")) {
-//     todosContainer.classList.remove("hide");
-//     addTodoinTodoContainer();
-//   }
-//   if (todoInputForm.classList.contains("show")) {
-//     todosContainer.classList.add("hide");
-//   }
-// });
-
-// closeIconForTodoInputForm.addEventListener("click", () => {
-//   todoInputForm.classList.remove("show");
-// });
